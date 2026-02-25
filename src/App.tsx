@@ -1,9 +1,21 @@
+import { Hero } from './components/Hero'
+import { About } from './components/About'
+import { Timeline } from './components/Timeline'
+import { Expertise } from './components/Expertise'
+import { Affiliations } from './components/Affiliations'
+import { Contact } from './components/Contact'
+import { Footer } from './components/Footer'
+
 function App() {
   return (
     <div className="noise-bg min-h-screen">
-      <h1 className="text-4xl text-center pt-20" style={{ fontFamily: 'Playfair Display', color: 'var(--text-heading)' }}>
-        James Gannon
-      </h1>
+      <Hero />
+      <About />
+      <Timeline />
+      <Expertise />
+      <Affiliations />
+      <Contact />
+      <Footer />
     </div>
   )
 }
