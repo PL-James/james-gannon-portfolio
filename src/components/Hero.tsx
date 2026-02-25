@@ -4,41 +4,52 @@ import { hero } from '../data/content'
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: 'radial-gradient(ellipse at 30% 50%, rgba(45,212,191,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(45,212,191,0.05) 0%, transparent 60%)',
-          }}
-        />
+      {/* Gradient mesh background */}
+      <div className="gradient-mesh">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
       </div>
 
+      {/* Glow behind name */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          width: '600px',
+          height: '200px',
+          background: 'radial-gradient(ellipse, rgba(0,221,179,0.06) 0%, transparent 70%)',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -60%)',
+          filter: 'blur(40px)',
+        }}
+      />
+
       <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center"
-        style={{ fontFamily: "'Playfair Display', serif", color: 'var(--text-heading)' }}
+        initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-center relative z-10"
+        style={{ color: 'var(--text-heading)' }}
       >
         {hero.name}
       </motion.h1>
 
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mt-6 text-lg md:text-xl tracking-wide text-center"
-        style={{ color: 'var(--accent)', letterSpacing: '0.15em' }}
+        initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-6 text-sm md:text-base tracking-widest uppercase text-center relative z-10"
+        style={{ color: 'var(--accent)', letterSpacing: '0.2em' }}
       >
         {hero.tagline}
       </motion.p>
 
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mt-4 text-base md:text-lg max-w-2xl text-center"
+        initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-6 text-base md:text-lg max-w-2xl text-center leading-relaxed relative z-10"
         style={{ color: 'var(--text-body)' }}
       >
         {hero.subtitle}
@@ -48,16 +59,16 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-10"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-6 h-10 rounded-full border-2 flex items-start justify-center pt-2"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-5 h-8 rounded-full border flex items-start justify-center pt-1.5"
           style={{ borderColor: 'var(--text-muted)' }}
         >
-          <div className="w-1 h-2 rounded-full" style={{ backgroundColor: 'var(--text-muted)' }} />
+          <div className="w-0.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--text-muted)' }} />
         </motion.div>
       </motion.div>
     </section>

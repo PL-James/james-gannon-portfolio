@@ -30,19 +30,10 @@ export function Contact() {
     }
   }
 
-  const inputStyle = {
-    backgroundColor: 'var(--bg-card)',
-    borderColor: 'var(--border)',
-    color: 'var(--text-heading)',
-  }
-
   return (
     <section id="contact" className="px-6 py-32 max-w-2xl mx-auto">
       <ScrollReveal>
-        <h2
-          className="text-3xl md:text-4xl font-bold mb-4"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
+        <h2 className="text-3xl md:text-4xl font-semibold mb-4 gradient-heading">
           {contact.heading}
         </h2>
         <p className="mb-12" style={{ color: 'var(--text-body)' }}>
@@ -50,24 +41,22 @@ export function Contact() {
         </p>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.1}>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
+      <ScrollReveal delay={0.05}>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="grid md:grid-cols-2 gap-5">
             <input
               name="name"
               type="text"
               required
               placeholder="Name"
-              className="w-full px-4 py-3 rounded-lg border text-sm focus:outline-none focus:ring-1"
-              style={{ ...inputStyle, '--tw-ring-color': 'var(--accent)' } as React.CSSProperties}
+              className="glass-input w-full px-4 py-3 rounded-lg text-sm"
             />
             <input
               name="email"
               type="email"
               required
               placeholder="Email"
-              className="w-full px-4 py-3 rounded-lg border text-sm focus:outline-none focus:ring-1"
-              style={{ ...inputStyle, '--tw-ring-color': 'var(--accent)' } as React.CSSProperties}
+              className="glass-input w-full px-4 py-3 rounded-lg text-sm"
             />
           </div>
           <textarea
@@ -75,14 +64,12 @@ export function Contact() {
             required
             rows={5}
             placeholder="Your message..."
-            className="w-full px-4 py-3 rounded-lg border text-sm focus:outline-none focus:ring-1 resize-none"
-            style={{ ...inputStyle, '--tw-ring-color': 'var(--accent)' } as React.CSSProperties}
+            className="glass-input w-full px-4 py-3 rounded-lg text-sm resize-none"
           />
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="px-8 py-3 rounded-lg text-sm font-medium transition-opacity duration-200 disabled:opacity-50"
-            style={{ backgroundColor: 'var(--accent)', color: 'var(--bg-primary)' }}
+            className="btn-glow px-8 py-3 rounded-lg text-sm font-medium"
           >
             {status === 'sending' ? 'Sending...' : 'Send Message'}
           </button>
@@ -100,16 +87,13 @@ export function Contact() {
         </form>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.2}>
+      <ScrollReveal delay={0.1}>
         <div className="flex items-center gap-6 mt-12">
           <a
             href={socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-200"
-            style={{ color: 'var(--text-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+            className="social-icon"
             aria-label="LinkedIn"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -120,10 +104,7 @@ export function Contact() {
             href={socials.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-200"
-            style={{ color: 'var(--text-muted)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+            className="social-icon"
             aria-label="X (Twitter)"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

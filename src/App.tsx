@@ -8,14 +8,23 @@ import { Footer } from './components/Footer'
 
 function App() {
   return (
-    <div className="noise-bg min-h-screen">
-      <Hero />
-      <About />
-      <Timeline />
-      <Expertise />
-      <Affiliations />
-      <Contact />
-      <Footer />
+    <div className="min-h-screen relative">
+      <div className="dot-grid" />
+      <div className="relative z-10">
+        <Hero />
+        <div className="section-divider" />
+        <About />
+        <div className="section-divider" />
+        <Timeline />
+        <div className="section-divider" />
+        <Expertise />
+        <div className="section-divider" />
+        <Affiliations />
+        <div className="section-divider" />
+        <Contact />
+        <div className="footer-line" />
+        <Footer />
+      </div>
     </div>
   )
 }

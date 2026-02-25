@@ -28,32 +28,15 @@ export function Expertise() {
   return (
     <section className="px-6 py-32 max-w-6xl mx-auto">
       <ScrollReveal>
-        <h2
-          className="text-3xl md:text-4xl font-bold mb-16"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
+        <h2 className="text-3xl md:text-4xl font-semibold mb-16 gradient-heading">
           Expertise
         </h2>
       </ScrollReveal>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-5">
         {expertise.map((item, i) => (
-          <ScrollReveal key={item.title} delay={i * 0.1}>
-            <div
-              className="p-8 rounded-xl border transition-colors duration-300"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                borderColor: 'var(--border)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--bg-card-hover)'
-                e.currentTarget.style.borderColor = 'var(--accent-dim)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--bg-card)'
-                e.currentTarget.style.borderColor = 'var(--border)'
-              }}
-            >
+          <ScrollReveal key={item.title} delay={i * 0.05}>
+            <div className="glass-card p-8">
               <div style={{ color: 'var(--accent)' }}>{icons[item.icon]}</div>
               <h3 className="text-xl font-semibold mt-4" style={{ color: 'var(--text-heading)' }}>
                 {item.title}

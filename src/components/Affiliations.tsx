@@ -5,20 +5,22 @@ export function Affiliations() {
   return (
     <section className="px-6 py-24">
       <ScrollReveal>
-        <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          {affiliations.map((org) => (
-            <a
-              key={org.name}
-              href={org.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm md:text-base font-medium tracking-wide transition-colors duration-300 hover:no-underline"
-              style={{ color: 'var(--text-muted)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
-            >
-              {org.name}
-            </a>
+        <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-14">
+          {affiliations.map((org, i) => (
+            <span key={org.name} className="flex items-center gap-x-10 md:gap-x-14">
+              <a
+                href={org.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium tracking-wider uppercase social-icon"
+                style={{ textDecoration: 'none' }}
+              >
+                {org.name}
+              </a>
+              {i < affiliations.length - 1 && (
+                <span className="hidden md:inline text-xs" style={{ color: 'var(--text-muted)', opacity: 0.3 }}>|</span>
+              )}
+            </span>
           ))}
         </div>
       </ScrollReveal>
