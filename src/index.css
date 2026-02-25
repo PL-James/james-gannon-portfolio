@@ -200,3 +200,136 @@ h1, h2, h3 {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
 }
+
+/* Horizontal timeline */
+.timeline-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+}
+
+.timeline-track::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .timeline-card {
+    flex: 0 0 380px;
+  }
+}
+
+/* Floating badges */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-badge {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.float-badge-alt {
+  animation: float-medium 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.float-badge-slow {
+  animation: float-slow 7s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Pull quote */
+.pull-quote {
+  border-left: 2px solid var(--accent);
+  padding-left: 24px;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-heading);
+  opacity: 0.9;
+}
+
+/* Bento grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .bento-featured {
+    grid-row: 1 / 3;
+  }
+}
+
+/* Accent line */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+/* Stats bar */
+.stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.stats-bar > div {
+  flex: 1;
+  min-width: 140px;
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+}
+
+.stats-bar > div:last-child {
+  border-right: none;
+}
+
+@media (max-width: 767px) {
+  .stats-bar {
+    flex-direction: column;
+  }
+  .stats-bar > div {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-bar > div:last-child {
+    border-bottom: none;
+  }
+}

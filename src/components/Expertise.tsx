@@ -24,7 +24,18 @@ const icons: Record<string, React.ReactNode> = {
   ),
 }
 
+const largeIcon: Record<string, React.ReactNode> = {
+  shield: (
+    <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+    </svg>
+  ),
+}
+
 export function Expertise() {
+  const featured = expertise[0]
+  const rest = expertise.slice(1)
+
   return (
     <section className="px-6 py-32 max-w-6xl mx-auto">
       <ScrollReveal>
@@ -33,10 +44,32 @@ export function Expertise() {
         </h2>
       </ScrollReveal>
 
-      <div className="grid md:grid-cols-2 gap-5">
-        {expertise.map((item, i) => (
-          <ScrollReveal key={item.title} delay={i * 0.05}>
-            <div className="glass-card p-8">
+      <div className="bento-grid">
+        {/* Featured card — spans 2 rows on desktop */}
+        <ScrollReveal delay={0.05}>
+          <div
+            className="glass-card p-10 md:p-12 h-full relative overflow-hidden bento-featured"
+            style={{ borderColor: 'rgba(0, 221, 179, 0.15)' }}
+          >
+            {/* Accent glow in corner */}
+            <div
+              className="absolute -top-20 -right-20 w-40 h-40 rounded-full pointer-events-none"
+              style={{ background: 'radial-gradient(circle, var(--accent-dim), transparent 70%)' }}
+            />
+            <div style={{ color: 'var(--accent)' }}>{largeIcon[featured.icon] || icons[featured.icon]}</div>
+            <h3 className="text-2xl md:text-3xl font-semibold mt-6" style={{ color: 'var(--text-heading)' }}>
+              {featured.title}
+            </h3>
+            <p className="text-base mt-4 leading-relaxed" style={{ color: 'var(--text-body)' }}>
+              {featured.description}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* Standard cards */}
+        {rest.map((item, i) => (
+          <ScrollReveal key={item.title} delay={0.1 + i * 0.05}>
+            <div className="glass-card p-8 h-full">
               <div style={{ color: 'var(--accent)' }}>{icons[item.icon]}</div>
               <h3 className="text-xl font-semibold mt-4" style={{ color: 'var(--text-heading)' }}>
                 {item.title}
